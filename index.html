@@ -1,3 +1,59 @@
-hello world
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Attendance System</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+    #qr-code {
+      width: 100%;
+      height: auto;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
 
+<div class="container">
+  <h2 class="text-center">QR Code Attendance System</h2>
+  <form id="generateQRForm">
+    <div class="form-group">
+      <label for="inputData">Enter Data:</label>
+      <input type="text" class="form-control" id="inputData" placeholder="Enter data...">
+    </div>
+    <button type="button" class="btn btn-primary btn-block" onclick="generateQRCode()">Generate QR Code</button>
+  </form>
+  <div id="qr-code" class="text-center"></div>
+</div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<script>
+  function generateQRCode() {
+    var inputData = document.getElementById("inputData").value;
+    if (inputData.trim() === "") {
+      alert("Please enter data to generate QR Code.");
+      return;
+    }
+    
+    var qr = new QRious({
+      element: document.getElementById("qr-code"),
+      value: inputData,
+      size: 300
+    });
+  }
+</script>
+
+</body>
+</html>
